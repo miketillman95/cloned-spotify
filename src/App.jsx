@@ -1,6 +1,8 @@
 import React from "react";
 import Dashboard from './Components/Dashboard'
 import Login from './Components/Login'
+import {jsx as _jsx} from 'react/jsx-runtime';
+
 
 import {Container} from './styles/App.styles'
 
