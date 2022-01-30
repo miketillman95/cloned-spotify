@@ -1,0 +1,33 @@
+diff --git a/node_modules/react-scripts/config/webpack.config.js b/node_modules/react-scripts/config/webpack.config.js
+index 2b1b3bb..42f6b11 100644
+--- a/node_modules/react-scripts/config/webpack.config.js
++++ b/node_modules/react-scripts/config/webpack.config.js
+@@ -318,16 +318,18 @@ module.exports = function (webpackEnv) {
+         .map(ext => `.${ext}`)
+         .filter(ext => useTypeScript || !ext.includes('ts')),
+       alias: {
+-        // Support React Native Web
+-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+-        'react-native': 'react-native-web',
+-        // Allows for better profiling with ReactDevTools
+-        ...(isEnvProductionProfile && {
+-          'react-dom$': 'react-dom/profiling',
+-          'scheduler/tracing': 'scheduler/tracing-profiling',
+-        }),
+-        ...(modules.webpackAliases || {}),
+-      },
++           "react/jsx-dev-runtime": "react/jsx-dev-runtime.js",
++           "react/jsx-runtime": "react/jsx-runtime.js",
++                // Support React Native Web
++                // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
++                'react-native': 'react-native-web',
++                // Allows for better profiling with ReactDevTools
++                ...(isEnvProductionProfile && {
++                  'react-dom$': 'react-dom/profiling',
++                  'scheduler/tracing': 'scheduler/tracing-profiling',
++                }),
++                ...(modules.webpackAliases || {}),
++              },
+       plugins: [
+         // Prevents users from importing files from outside of src/ (or node_modules/).
+         // This often causes confusion because we only process files within src/ with babel.
