@@ -29,7 +29,7 @@ useEffect(() => {
   
 
 useEffect(() => {
-    if(refreshToken || !expiresIn ) return
+    if(!refreshToken || !expiresIn ) return
     const interval = setInterval(async () => {
         try {
             const {
@@ -43,7 +43,7 @@ useEffect(() => {
         } catch {
             window.location = '/'
         }
-    }, (expiresIn - 60) * 100)
+    }, (expiresIn - 60) * 1000)
 
     return () => clearInterval(interval)
 }, [refreshToken, expiresIn])
