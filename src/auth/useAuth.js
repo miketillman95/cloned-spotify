@@ -34,9 +34,12 @@ useEffect(() => {
         try {
             const {
                 data: { access_token, expires_in},
-            } = await axios.post(`${process.env.REACT_APP_BASE_URL}/refresh`,
+            } = await axios.post(`${process.env.REACT_APP_BASE_URL}/refresh`, {
             refreshToken,
-            )
+            })
+            setAccessToken(access_token)
+            setExpiresIn(expires_in)
+
         } catch {
             window.location = '/'
         }
