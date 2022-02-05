@@ -1,8 +1,17 @@
 import React, { useState, useEffect} from 'react'
 import SpotifyWebApi from 'spotify-web-api-node'
+import axios from 'axios'
+import TrackSearchResult from '../Components/TrackSearchResult.js'
+import useAuth from '../auth/useAuth.js'
+import Player from './Player.js'
 
-import useAuth from '../auth/useAuth'
-import Player from './Player'
+import {
+    DashBoardContainer,
+    SearchInput,
+    ResultsContainer,
+    LyricsContainer,
+    PlayerContainer,
+} from './styles/Dashboard.styles.js'
 
 
 const spotifyApi = new SpotifyWebApi({
@@ -80,4 +89,34 @@ useEffect(() => {
 
     return () => (cancel = true)
 }, [search, accessToken])
+
+return (
+<DashBoardContainer>
+    <SearchInput
+      type = 'search'
+      placeholder = 'Look yo song up playa'
+      value = {search}
+      onChange= {e => setSearch(e.target.value)}      
+    />
+
+    <ResultsContainer>
+        {searchResults.map(track => (
+            <TrackSearchResult
+            track= {track}
+            key= {track.uri}
+            chooseTrack = {chooseTrack}
+            />
+        ))}
+        {searchResults.length === 0 && (
+            <LyricsContainer>{lyrics}</LyricsContainer>
+        )}
+    </ResultsContainer>
+    <PlayerContainer>
+        <Player accessToken= {accessToken} trackUri={playingTrack?.uri}/>
+    </PlayerContainer>
+</DashBoardContainer>
+
+)
 }
+
+export default Dashboard

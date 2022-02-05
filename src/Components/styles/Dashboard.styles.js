@@ -17,3 +17,23 @@ export const SearchInput = styled.input`
     font-size: 1.5rem;
   }
 `
+
+export const ResultsContainer = styled.div`
+  flex-grow: 1;
+  margin: 3rem 0;
+  overflow-y: auto;
+  overflow-x: auto;
+`
+
+export const LyricsContainer = styled.div`
+  height: 65vh;
+  text-align: center;
+  color: #fff;
+  white-space: pre;
+`
+
+export const PlayerContainer = styled.div`
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;`

@@ -1,4 +1,4 @@
-import express from "express"
+const express = require('express')
 import cors from "cors"
 import lyricsFinder from "lyrics-finder"
 import SpotifyWebApi from "spotify-web-api-node"
